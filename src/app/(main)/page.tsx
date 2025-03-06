@@ -1,15 +1,20 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Loader, ShoppingCart } from "lucide-react";
 import { IProduct } from "../definitions/products";
 import Loading from "./loading";
+import { toast } from "react-hot-toast";
+import { useCart } from "../context/CartContext";
 
 export default function Home() {
   const [products, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isAddingToCart, setIsAddingToCart] = useState<string | null>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
+  // const { updateCartCount } = useCart();
 
   useEffect(() => {
     async function fetchProduct() {
@@ -35,6 +40,35 @@ export default function Home() {
     router.push(`/products/${id}`);
   };
 
+  const addToCart = async (productId: string) => {
+    setIsAddingToCart(productId);
+    try {
+      const response = await fetch("/api/cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productId: productId,
+        }),
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add to cart");
+      }
+
+      await updateCartCount(); // Update cart count after adding item
+      toast.success("Product added to cart!");
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+      toast.error("Failed to add to cart. Please try again.");
+      router.push("/login");
+    } finally {
+      setIsAddingToCart(null);
+    }
+  };
+
   if (isLoading) {
     return <Loading />;
   }
@@ -58,12 +92,25 @@ export default function Home() {
             <p className="text-sm text-gray-500">
               ⭐{product.rating.rate} | {product.rating.count} terjual🩷
             </p>
-            <button
-              onClick={() => handleViewDetails(product.id)}
-              className="bg-green-600 text-white px-4 py-2 rounded-lg mt-2"
-            >
-              View Details
-            </button>
+            <div className="flex space-x-2 mt-2">
+              <button
+                onClick={() => addToCart(product.id)}
+                disabled={isAddingToCart === product.id}
+                className="flex items-center justify-center bg-green-500 text-white py-3 px-5 rounded hover:bg-green-600 transition-colors disabled:bg-green-300"
+              >
+                {isAddingToCart === product.id ? (
+                  <Loader className="w-4 h-4 animate-spin" />
+                ) : (
+                  <ShoppingCart className="w-6 h-6" />
+                )}
+              </button>
+              <button
+                onClick={() => handleViewDetails(product.id)}
+                className="bg-green-200 text-green-600 font-semibold px-4 py-2 rounded-lg flex-grow hover:bg-green-100 transition-colors"
+              >
+                View Details
+              </button>
+            </div>
           </div>
         ))}
       </div>

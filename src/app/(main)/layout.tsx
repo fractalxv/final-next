@@ -72,9 +72,9 @@ export default function RootLayout({
 
   return (
     <>
-      <header className="bg-green-600 border text-white p-4 flex justify-between backdrop-blur-xl gap-4 items-center">
+      <header className="bg-slate-100 border-b-green-600 p-4 flex justify-between gap-4 items-center">
         <Link href="/">
-          <h1 className="text-4xl text-bold">🐸 Tokopaedi</h1>
+          <h1 className="text-4xl text-bold text-green-600">🐸 Tokopaedi</h1>
         </Link>
 
         <form onSubmit={handleSubmit} className="flex w-full md:w-1/3 mb-2 md:mb-0 items-center">
@@ -87,11 +87,11 @@ export default function RootLayout({
           />
         </form>
 
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center text-green-600">
           <span>Welcome, {userName}</span>
 
           <Link href="/cart" className="relative flex items-center">
-            <ShoppingCart className="w-5 h-5 text-white text-bold" />
+            <ShoppingCart className="w-5 h-5 text-green-600 text-bold" />
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">
                 {cartCount}
