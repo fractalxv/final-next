@@ -81,29 +81,28 @@ export default function ProductDetailPage() {
 
   return (
     <RootLayout>
-      <div className="container mx-auto p-4 max-w-6xl">
+      <div className="container mx-auto p-6 max-w-6xl">
         <button
           onClick={() => router.push("/")}
-          className="mb-6 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700"
+          className="mb-6 px-3 py-2 text-green-500 rounded text-lg"
         >
-          Back to Home
+          ← Back to Home
         </button>
-
-        <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="w-full md:w-1/2 p-6 flex justify-center items-center bg-gray-50">
-            <img src={product.image} alt={product.title} className="max-h-96 object-contain" />
+        <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-2xl overflow-hidden">
+          <div className="w-full md:w-1/2 p-1 flex justify-center items-center bg-slate-50">
+            <img src={product.image} alt={product.title} className="max-h-150 object-contain " />
           </div>
 
           <div className="w-full md:w-1/2 p-6">
-            <h1 className="text-2xl font-bold mb-4">{product.title}</h1>
+            <h1 className="text-5xl font-bold mb-2">{product.title}</h1>
 
-            <div className="mb-4">
+            <div className="mb-2">
               <p className="text-gray-600">Stock: {product.rating.count}</p>
-              <p className="text-red-600 text-xl font-bold">$ {product.price}</p>
+              <p className="text-red-600 text-2xl font-bold">$ {product.price}</p>
             </div>
 
-            <div className="mb-6">
-              <p className="text-gray-700 mb-4">{product.description}</p>
+            <div className="mb-2">
+              <p className="text-gray-700 mb-4 text-sm">{product.description}</p>
               <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
                 {product.category}
               </span>
