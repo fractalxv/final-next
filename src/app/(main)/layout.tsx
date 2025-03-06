@@ -25,6 +25,7 @@ export default function RootLayout({
       router.push(`/?search=${encodeURIComponent(inputValue.trim())}`);
     } else {
       // If search is empty, go to homepage without search params
+      
       router.push('/');
     }
   };
@@ -76,7 +77,7 @@ export default function RootLayout({
     <>
       <header className="bg-slate-100 border-b-green-600 p-4 flex justify-between gap-4 items-center">
         <Link href="/">
-          <h1 className="text-4xl text-bold text-green-600">🐸 Tokopaedi</h1>
+          <h1 className="text-4xl text-extrabold text-green-600">🐸 Tokopaedi</h1>
         </Link>
 
         <form onSubmit={handleSubmit} className="flex w-full md:w-1/3 mb-2 md:mb-0 items-center">
@@ -89,7 +90,7 @@ export default function RootLayout({
           />
           <button 
             type="submit" 
-            className="ml-2 bg-green-300 text-white p-2 rounded-full"
+            className="ml-2 text-white p-2 rounded-full"
             aria-label="Search"
           >
             🔍
