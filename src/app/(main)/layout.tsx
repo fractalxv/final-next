@@ -118,7 +118,7 @@ export default function RootLayout({
               <Link href="/login" className="bg-green-600 text-white px-3 py-1 rounded-md hover:bg-green-700 transition-colors">
                 Login
               </Link>
-              <Link href="/register" className="bg-green-400 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition-colors">
+              <Link href="/register" className="bg-green-400 text-white px-3 py-1 rounded-md hover:bg-green-500 transition-colors">
                 Register
               </Link>
             </div>
