@@ -56,7 +56,7 @@ export default function Home() {
             <p className="text-green-600 font-bold">${product.price}</p>
             <p className="text-gray-600">{product.category}</p>
             <p className="text-sm text-gray-500">
-              {product.rating.rate} | {product.rating.count} terjual
+              ⭐{product.rating.rate} | {product.rating.count} terjual🩷
             </p>
             <button
               onClick={() => handleViewDetails(product.id)}

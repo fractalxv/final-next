@@ -10,7 +10,7 @@ export default function Login() {
   return (
     
     <form action={formAction} className="p-8 bg-white w-[320px] rounded-2xl shadow-md flex flex-col gap-8">
-      <h1 className="text-3xl text-center font-semibold text-slate-500">Welcome to HactivStore</h1>
+      <h1 className="text-3xl text-center font-semibold text-slate-500">Welcome to Tokopaedi🐸</h1>
       {state.message && (
         <div className="text-red-500 tex-sm mt-2 bg-red-50 p-2 rounded">{state.message}</div>
       )}

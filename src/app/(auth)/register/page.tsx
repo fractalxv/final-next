@@ -23,7 +23,7 @@ export default function Register() {
         action={formAction}
         className="p-8 bg-white w-[320px] rounded-md shadow-md flex flex-col gap-8"
       >
-        <h1 className="text-3xl text-center font-semibold text-slate-500">Create New Account :)</h1>
+        <h1 className="text-3xl text-center font-semibold text-slate-500">Create New Account 😀</h1>
 
         <div>
           <label htmlFor="email">Email</label>
