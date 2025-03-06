@@ -13,6 +13,7 @@ export default function RootLayout({
   const [inputValue, setInputValue] = useState("");
   const [userName, setUserName] = useState("Guest");
   const [cartCount, setCartCount] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +26,6 @@ export default function RootLayout({
       router.push(`/?search=${encodeURIComponent(inputValue.trim())}`);
     } else {
       // If search is empty, go to homepage without search params
-      
       router.push('/');
     }
   };
@@ -39,8 +39,10 @@ export default function RootLayout({
         }
         const user = await res.json();
         setUserName(user.email);
+        setIsLoggedIn(user.email !== 'Guest');
       } catch (error) {
         console.error('Error fetching user:', error);
+        setIsLoggedIn(false);
       }
     }
     fetchUser();
@@ -109,7 +111,18 @@ export default function RootLayout({
             )}
           </Link>
           
-          <LogoutButton />
+          {isLoggedIn ? (
+            <LogoutButton />
+          ) : (
+            <div className="flex gap-2">
+              <Link href="/login" className="bg-green-600 text-white px-3 py-1 rounded-md hover:bg-green-700 transition-colors">
+                Login
+              </Link>
+              <Link href="/register" className="bg-green-400 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition-colors">
+                Register
+              </Link>
+            </div>
+          )}
         </div>
         
       </header>
