@@ -72,12 +72,12 @@ export default function RootLayout({
 
   return (
     <>
-      <header className="bg-green-600 text-white p-4 flex backdrop-blur-xl gap-4 items-center">
+      <header className="bg-green-600 border text-white p-4 flex justify-between backdrop-blur-xl gap-4 items-center">
         <Link href="/">
           <h1 className="text-4xl text-bold">🐸 Tokopaedi</h1>
         </Link>
 
-        <form onSubmit={handleSubmit} className="flex w-full md:w-1/3 mb-2 md:mb-0">
+        <form onSubmit={handleSubmit} className="flex w-full md:w-1/3 mb-2 md:mb-0 items-center">
           <input
             type="text"
             value={inputValue}
@@ -87,7 +87,7 @@ export default function RootLayout({
           />
         </form>
 
-        <div className="ml-auto flex items-center gap-4">
+        <div className="flex gap-4 items-center">
           <span>Welcome, {userName}</span>
 
           <Link href="/cart" className="relative flex items-center">
@@ -98,8 +98,10 @@ export default function RootLayout({
               </span>
             )}
           </Link>
+          
+          <LogoutButton />
         </div>
-        <LogoutButton />
+        
       </header>
       {children}
     </>

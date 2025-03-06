@@ -44,7 +44,7 @@ export default function CheckoutPage() {
      <RootLayout>
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-6">
-        <h1 className="text-3xl font-bold mb-4 text-center">🛒 Checkout</h1>
+        <h1 className="text-3xl font-bold mb-4 text-center">🛒 My Cart</h1>
 
         {cart.length === 0 ? (
           <p className="text-gray-600 text-center">Your cart is empty.</p>
