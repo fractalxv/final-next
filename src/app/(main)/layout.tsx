@@ -10,7 +10,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [searchQuery, setSearchQuery] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [userName, setUserName] = useState("Guest");
   const [cartCount, setCartCount] = useState(0);
@@ -24,6 +23,9 @@ export default function RootLayout({
     e.preventDefault();
     if (inputValue.trim()) {
       router.push(`/?search=${encodeURIComponent(inputValue.trim())}`);
+    } else {
+      // If search is empty, go to homepage without search params
+      router.push('/');
     }
   };
 
@@ -85,6 +87,13 @@ export default function RootLayout({
             className="p-2 rounded-3xl w-full text-black bg-slate-50"
             placeholder="  Cari Barang apa..."
           />
+          <button 
+            type="submit" 
+            className="ml-2 bg-green-300 text-white p-2 rounded-full"
+            aria-label="Search"
+          >
+            🔍
+          </button>
         </form>
 
         <div className="flex gap-4 items-center text-green-600">
