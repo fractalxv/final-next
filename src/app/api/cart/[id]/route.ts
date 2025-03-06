@@ -1,7 +1,7 @@
 import { db } from "../../../../app/db/mongo";
 
 export async function GET(
-  req: Request,
+  request: Request,
   { params }: { params: { id: string } }
 ) {
   const { id } = params;
